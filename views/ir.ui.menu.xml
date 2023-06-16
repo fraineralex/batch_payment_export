@@ -1,0 +1,17 @@
+<odoo>
+    <!-- Registro del action para el wizard -->
+    <record id="action_batch_payment_wizard" model="ir.actions.act_window">
+        <field name="name">Exportar Pagos</field>
+        <field name="res_model">batch.payment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Hereda del elemento root_payment_menu -->
+    <record id="menuitem_export_payments" model="ir.ui.menu">
+        <field name="name">Exportar pagos</field>
+        <field name="parent_id" ref="account.account_banks_menu"/>
+        <field name="action" ref="batch_payment_export.action_batch_payment_wizard"/>
+        <field name="sequence" type="int">5</field>
+    </record>
+</odoo>
