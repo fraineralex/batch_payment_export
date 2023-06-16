@@ -7,10 +7,10 @@
         <field name="target">new</field>
     </record>
 
-    <!-- Hereda del elemento root_payment_menu -->
+    <!-- Hereda del elemento account_bank_menu -->
     <record id="menuitem_export_payments" model="ir.ui.menu">
-        <field name="name">Exportar pagos</field>
-        <field name="parent_id" ref="account.account_banks_menu"/>
+        <field name="name">Exportar reporte de pagos</field>
+        <field name="parent_id" ref="dgii_reports.account_bank_menu"/>
         <field name="action" ref="batch_payment_export.action_batch_payment_wizard"/>
         <field name="sequence" type="int">5</field>
     </record>

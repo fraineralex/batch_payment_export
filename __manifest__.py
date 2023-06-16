@@ -5,9 +5,9 @@
     'version': '1.0',
     'summary': 'Módulo para exportar pagos en lote a Excel',
     'description': 'Este módulo permite exportar pagos en lote a Excel.',
-    'author': 'Lifer',
+    'author': 'Lifter',
     'category': 'Accounting',
-    'depends': ['base', 'account'],
+    'depends': ['dgii_reports'],
     'data': [
         # views
         'views/ir.ui.menu.xml',
@@ -18,6 +18,7 @@
         # security
         'security/ir.model.access.csv',
     ],
+    'icon': 'batch_payment_export/static/src/img/icon.png',
     'installable': True,
     'application': True,
     'auto_install': True,
