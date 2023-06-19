@@ -17,6 +17,7 @@ IDENTIFICATION_TYPE = {
 INSTANT_PAYMENT = 1
 SIMPLE_PAYMENT = 2
 
+
 class BatchPaymentWizard(models.TransientModel):
     _name = 'batch.payment.wizard'
     _description = 'Wizard para generar reporte de pagos agrupados'
@@ -48,14 +49,14 @@ class BatchPaymentWizard(models.TransientModel):
 
         for row_num, payment in enumerate(selected_payments, start=1):
 
-            #Validaciones
-            self.payment_validations(payment)            
+            # Validaciones
+            self.payment_validations(payment)
 
             # Campos requeridos del modelo en ambas plantillas
             reference_transaction = payment.move_id.name or ""
-            account_number = payment.partner_bank_id.acc_number
-            beneficiary = payment.partner_bank_id.acc_holder_name
-            amount = str(payment.amount)
+            account_number = payment.partner_bank_id.acc_number or ""
+            beneficiary = payment.partner_bank_id.acc_holder_name or ""
+            amount = str(payment.amount) or ""
             description = payment.ref or ""
             account_type = payment.partner_bank_id.acc_type or ""
             beneficiary_email = payment.partner_bank_id.partner_id.email or ""
@@ -81,7 +82,7 @@ class BatchPaymentWizard(models.TransientModel):
             elif payment_type == INSTANT_PAYMENT:
                 # Campos requeridos del modelo de pago para plantilla de pago al instante
                 swift_code = payment.partner_bank_id.bank_bic or ""
-                movement_type = payment.move_id.move_type[1]
+                movement_type = payment.move_id.type_name or ""
                 identification_number = payment.partner_id.vat or ""
                 identification_type = IDENTIFICATION_TYPE['CEDULA']
 
@@ -126,7 +127,8 @@ class BatchPaymentWizard(models.TransientModel):
             payment_type = SIMPLE_PAYMENT
 
         # Generar el reporte de Excel
-        workbook = self.generate_excel_report(headers, title, selected_payments, payment_type)
+        workbook = self.generate_excel_report(
+            headers, title, selected_payments, payment_type)
 
         # Guardar el archivo de Excel en un objeto BytesIO
         workbook_data = io.BytesIO()
@@ -166,22 +168,23 @@ class BatchPaymentWizard(models.TransientModel):
         # Si el monto es negativo o igual a cero
         error_message = ''
         if payment.amount <= 0:
-            error_message = 'El monto del pago "{}" no puede ser negativo. Por favor, corrija el monto antes de continuar.'.format(payment.name)
+            error_message = 'El monto del pago "{}" no puede ser negativo. Por favor, corrija el monto antes de continuar.'.format(
+                payment.name)
 
         # Si el pago no tiene número de cuenta destino
         if not payment.partner_bank_id.acc_number:
-            error_message = 'El pago "{}" debe contener un número de cuenta de destino. Por favor, agregue este campo antes de continuar.'.format(payment.name)
+            error_message = 'El pago "{}" debe contener un número de cuenta de destino. Por favor, agregue este campo antes de continuar.'.format(
+                payment.name)
 
         # Si el pago no tiene beneficiario
         if not payment.partner_bank_id.acc_holder_name:
-            error_message = 'El pago "{}" debe contener un beneficiario. Por favor, agregue este campo antes de continuar.'.format(payment.name)
+            error_message = 'El pago "{}" debe contener un beneficiario. Por favor, agregue este campo antes de continuar.'.format(
+                payment.name)
 
         # Si el campo no tiene tipo de cuenta destino
         if not payment.partner_bank_id.acc_type:
-            error_message = 'El pago "{}" debe contener un tipo de cuenta de destino. Por favor, agregue este campo antes de continuar.'.format(payment.name)
-        
+            error_message = 'El pago "{}" debe contener un tipo de cuenta de destino. Por favor, agregue este campo antes de continuar.'.format(
+                payment.name)
+
         if error_message != '':
             raise UserError(error_message)
-
-
-            

@@ -7,7 +7,7 @@
         <field name="target">new</field>
     </record>
 
-    <!-- Hereda del elemento account_bank_menu -->
+    <!-- Hereda del elemento dgii_reports.account_bank_menu -->
     <record id="menuitem_export_payments" model="ir.ui.menu">
         <field name="name">Exportar reporte de pagos</field>
         <field name="parent_id" ref="dgii_reports.account_bank_menu"/>
