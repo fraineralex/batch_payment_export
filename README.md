@@ -14,7 +14,7 @@ Insllation
 2. Place the module in the modules folder of your Odoo installation.
 3. Restart the Odoo server.
 4. Log in to the Odoo administration panel.
-5. Go to the "Applications" section and look for "Real Estate".
+5. Go to the "Applications" section and look for "Batch Payment Export".
 6. Click on "Install" to install the module.
 
 Developer
