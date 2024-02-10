@@ -55,7 +55,7 @@ Batch Payments Export is an Odoo module that allows you to export registered pay
 </a> &#xa0; &#xa0;
 
 <a href="https://odoo.com">
-  <img width="50" title="Odoo" alt="Odoo Logo" src="https://camo.githubusercontent.com/c09318462ff513c1dff81bcc8b8932bc746eb5640f12fd93722f968325814377/68747470733a2f2f696d67732e7365617263682e62726176652e636f6d2f796749486d784e7637742d6836514c6b7a764f2d674d6969584e666354765a6878676f53547136354673382f72733a6669743a3530303a3530303a312f673a63652f6148523063484d364c79397a4d79316c2f645331335a584e304c544575595731682f656d39755958647a4c6d4e76625339302f634751766247396e62334d764e545a692f4d6a41795a6d45774d4441775a6d59772f4d4441314f4467334d7a4e684c7a42342f4d433577626d63">
+  <img width="100" title="Odoo" alt="Odoo Logo" src="https://github.com/odoo/odoo/blob/17.0/addons/web/static/img/logo.png">
 </a> &#xa0; &#xa0;
 
 <a href="https://pypi.org/project/xlwt/">
