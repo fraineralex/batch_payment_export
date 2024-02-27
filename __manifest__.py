@@ -5,7 +5,7 @@
     'version': '1.0',
     'summary': 'Módulo para exportar pagos en lote a Excel',
     'description': 'Este módulo permite exportar pagos en lote a Excel.',
-    'author': 'Lifter',
+    'author': 'Frainer Encarnación',
     'category': 'Accounting',
     'depends': ['dgii_reports'],
     'data': [
